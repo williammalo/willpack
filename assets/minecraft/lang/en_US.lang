@@ -299,7 +299,7 @@ key.pickItem=Pick Block
 key.mouseButton=Button %1$s
 key.command=Command
 
-resourcePack.openFolder=Resource pack folder
+resourcePack.openFolder=Open folder
 resourcePack.title=Select Resource Pack
 resourcePack.folderInfo=(Place resource pack files here)
 
