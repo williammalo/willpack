@@ -1007,7 +1007,7 @@ enchantment.level.8=VIII
 enchantment.level.9=IX
 enchantment.level.10=X
 
-gui.achievements=Achievements
+gui.achievements=§fAchievements
 gui.stats=Statistics
 
 stat.generalButton=General

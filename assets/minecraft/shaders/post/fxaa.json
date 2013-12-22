@@ -1,0 +1,23 @@
+{
+    "targets": [
+        "swap",
+        "swap2"
+    ],
+    "passes": [
+        {
+            "name": "fxaa",
+            "intarget": "minecraft:main",
+            "outtarget": "swap"
+        },
+        {
+            "name": "willpackColor",
+            "intarget": "swap",
+            "outtarget": "swap2"
+        },
+        {
+            "name": "willpackBloom",
+            "intarget": "swap2",
+            "outtarget": "minecraft:main"
+        }
+    ]
+}
