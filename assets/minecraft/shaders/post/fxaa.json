@@ -1,22 +1,51 @@
 {
     "targets": [
         "swap",
-        "swap2"
+        "pswap",
+        "pprevious",
+        "blurriness"
     ],
     "passes": [
-        {
-            "name": "fxaa",
+            {
+            "name": "phosphor",
             "intarget": "minecraft:main",
-            "outtarget": "swap"
+            "outtarget": "pswap",
+            "auxtargets": [
+                {
+                    "name": "PrevSampler",
+                    "id": "pprevious"
+                }
+            ]
         },
+        {
+            "name": "blit",
+            "intarget": "pswap",
+            "outtarget": "pprevious"
+        },
+        {
+            "name": "blit",
+            "intarget": "pswap",
+            "outtarget": "blurriness"
+        },
+
+
+
+
+
         {
             "name": "willpackColor",
-            "intarget": "swap",
-            "outtarget": "swap2"
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "MBSampler",
+                    "id": "blurriness"
+                }
+            ]
         },
         {
-            "name": "willpackBloom",
-            "intarget": "swap2",
+            "name": "fxaa",
+            "intarget": "swap",
             "outtarget": "minecraft:main"
         }
     ]

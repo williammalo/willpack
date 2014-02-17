@@ -1,6 +1,7 @@
 #version 120
 
 uniform sampler2D DiffuseSampler;
+uniform sampler2D MBSampler;
 uniform vec2 OutSize;
 varying vec2 texCoord;
 
@@ -85,95 +86,95 @@ vec4 HSLtoRGB( vec4 col )
 
 //samples color from 81 places on the screen and averages them
 vec4 averageColor=(
-    texture2D(DiffuseSampler, vec2(0.1,0.1))+
-    texture2D(DiffuseSampler, vec2(0.1,0.2))+
-    texture2D(DiffuseSampler, vec2(0.1,0.3))+
-    texture2D(DiffuseSampler, vec2(0.1,0.4))+
-    texture2D(DiffuseSampler, vec2(0.1,0.5))+
-    texture2D(DiffuseSampler, vec2(0.1,0.6))+
-    texture2D(DiffuseSampler, vec2(0.1,0.7))+
-    texture2D(DiffuseSampler, vec2(0.1,0.8))+
-    texture2D(DiffuseSampler, vec2(0.1,0.9))+
+    texture2D(MBSampler, vec2(0.1,0.1))+
+    texture2D(MBSampler, vec2(0.1,0.2))+
+    texture2D(MBSampler, vec2(0.1,0.3))+
+    texture2D(MBSampler, vec2(0.1,0.4))+
+    texture2D(MBSampler, vec2(0.1,0.5))+
+    texture2D(MBSampler, vec2(0.1,0.6))+
+    texture2D(MBSampler, vec2(0.1,0.7))+
+    texture2D(MBSampler, vec2(0.1,0.8))+
+    texture2D(MBSampler, vec2(0.1,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.2,0.1))+
-    texture2D(DiffuseSampler, vec2(0.2,0.2))+
-    texture2D(DiffuseSampler, vec2(0.2,0.3))+
-    texture2D(DiffuseSampler, vec2(0.2,0.4))+
-    texture2D(DiffuseSampler, vec2(0.2,0.5))+
-    texture2D(DiffuseSampler, vec2(0.2,0.6))+
-    texture2D(DiffuseSampler, vec2(0.2,0.7))+
-    texture2D(DiffuseSampler, vec2(0.2,0.8))+
-    texture2D(DiffuseSampler, vec2(0.2,0.9))+
+    texture2D(MBSampler, vec2(0.2,0.1))+
+    texture2D(MBSampler, vec2(0.2,0.2))+
+    texture2D(MBSampler, vec2(0.2,0.3))+
+    texture2D(MBSampler, vec2(0.2,0.4))+
+    texture2D(MBSampler, vec2(0.2,0.5))+
+    texture2D(MBSampler, vec2(0.2,0.6))+
+    texture2D(MBSampler, vec2(0.2,0.7))+
+    texture2D(MBSampler, vec2(0.2,0.8))+
+    texture2D(MBSampler, vec2(0.2,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.3,0.1))+
-    texture2D(DiffuseSampler, vec2(0.3,0.2))+
-    texture2D(DiffuseSampler, vec2(0.3,0.3))+
-    texture2D(DiffuseSampler, vec2(0.3,0.4))+
-    texture2D(DiffuseSampler, vec2(0.3,0.5))+
-    texture2D(DiffuseSampler, vec2(0.3,0.6))+
-    texture2D(DiffuseSampler, vec2(0.3,0.7))+
-    texture2D(DiffuseSampler, vec2(0.3,0.8))+
-    texture2D(DiffuseSampler, vec2(0.3,0.9))+
+    texture2D(MBSampler, vec2(0.3,0.1))+
+    texture2D(MBSampler, vec2(0.3,0.2))+
+    texture2D(MBSampler, vec2(0.3,0.3))+
+    texture2D(MBSampler, vec2(0.3,0.4))+
+    texture2D(MBSampler, vec2(0.3,0.5))+
+    texture2D(MBSampler, vec2(0.3,0.6))+
+    texture2D(MBSampler, vec2(0.3,0.7))+
+    texture2D(MBSampler, vec2(0.3,0.8))+
+    texture2D(MBSampler, vec2(0.3,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.4,0.1))+
-    texture2D(DiffuseSampler, vec2(0.4,0.2))+
-    texture2D(DiffuseSampler, vec2(0.4,0.3))+
-    texture2D(DiffuseSampler, vec2(0.4,0.4))+
-    texture2D(DiffuseSampler, vec2(0.4,0.5))+
-    texture2D(DiffuseSampler, vec2(0.4,0.6))+
-    texture2D(DiffuseSampler, vec2(0.4,0.7))+
-    texture2D(DiffuseSampler, vec2(0.4,0.8))+
-    texture2D(DiffuseSampler, vec2(0.4,0.9))+
+    texture2D(MBSampler, vec2(0.4,0.1))+
+    texture2D(MBSampler, vec2(0.4,0.2))+
+    texture2D(MBSampler, vec2(0.4,0.3))+
+    texture2D(MBSampler, vec2(0.4,0.4))+
+    texture2D(MBSampler, vec2(0.4,0.5))+
+    texture2D(MBSampler, vec2(0.4,0.6))+
+    texture2D(MBSampler, vec2(0.4,0.7))+
+    texture2D(MBSampler, vec2(0.4,0.8))+
+    texture2D(MBSampler, vec2(0.4,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.5,0.1))+
-    texture2D(DiffuseSampler, vec2(0.5,0.2))+
-    texture2D(DiffuseSampler, vec2(0.5,0.3))+
-    texture2D(DiffuseSampler, vec2(0.5,0.4))+
-    texture2D(DiffuseSampler, vec2(0.5,0.5))+
-    texture2D(DiffuseSampler, vec2(0.5,0.6))+
-    texture2D(DiffuseSampler, vec2(0.5,0.7))+
-    texture2D(DiffuseSampler, vec2(0.5,0.8))+
-    texture2D(DiffuseSampler, vec2(0.5,0.9))+
+    texture2D(MBSampler, vec2(0.5,0.1))+
+    texture2D(MBSampler, vec2(0.5,0.2))+
+    texture2D(MBSampler, vec2(0.5,0.3))+
+    texture2D(MBSampler, vec2(0.5,0.4))+
+    texture2D(MBSampler, vec2(0.5,0.5))+
+    texture2D(MBSampler, vec2(0.5,0.6))+
+    texture2D(MBSampler, vec2(0.5,0.7))+
+    texture2D(MBSampler, vec2(0.5,0.8))+
+    texture2D(MBSampler, vec2(0.5,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.6,0.1))+
-    texture2D(DiffuseSampler, vec2(0.6,0.2))+
-    texture2D(DiffuseSampler, vec2(0.6,0.3))+
-    texture2D(DiffuseSampler, vec2(0.6,0.4))+
-    texture2D(DiffuseSampler, vec2(0.6,0.5))+
-    texture2D(DiffuseSampler, vec2(0.6,0.6))+
-    texture2D(DiffuseSampler, vec2(0.6,0.7))+
-    texture2D(DiffuseSampler, vec2(0.6,0.8))+
-    texture2D(DiffuseSampler, vec2(0.6,0.9))+
+    texture2D(MBSampler, vec2(0.6,0.1))+
+    texture2D(MBSampler, vec2(0.6,0.2))+
+    texture2D(MBSampler, vec2(0.6,0.3))+
+    texture2D(MBSampler, vec2(0.6,0.4))+
+    texture2D(MBSampler, vec2(0.6,0.5))+
+    texture2D(MBSampler, vec2(0.6,0.6))+
+    texture2D(MBSampler, vec2(0.6,0.7))+
+    texture2D(MBSampler, vec2(0.6,0.8))+
+    texture2D(MBSampler, vec2(0.6,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.7,0.1))+
-    texture2D(DiffuseSampler, vec2(0.7,0.2))+
-    texture2D(DiffuseSampler, vec2(0.7,0.3))+
-    texture2D(DiffuseSampler, vec2(0.7,0.4))+
-    texture2D(DiffuseSampler, vec2(0.7,0.5))+
-    texture2D(DiffuseSampler, vec2(0.7,0.6))+
-    texture2D(DiffuseSampler, vec2(0.7,0.7))+
-    texture2D(DiffuseSampler, vec2(0.7,0.8))+
-    texture2D(DiffuseSampler, vec2(0.7,0.9))+
+    texture2D(MBSampler, vec2(0.7,0.1))+
+    texture2D(MBSampler, vec2(0.7,0.2))+
+    texture2D(MBSampler, vec2(0.7,0.3))+
+    texture2D(MBSampler, vec2(0.7,0.4))+
+    texture2D(MBSampler, vec2(0.7,0.5))+
+    texture2D(MBSampler, vec2(0.7,0.6))+
+    texture2D(MBSampler, vec2(0.7,0.7))+
+    texture2D(MBSampler, vec2(0.7,0.8))+
+    texture2D(MBSampler, vec2(0.7,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.8,0.1))+
-    texture2D(DiffuseSampler, vec2(0.8,0.2))+
-    texture2D(DiffuseSampler, vec2(0.8,0.3))+
-    texture2D(DiffuseSampler, vec2(0.8,0.4))+
-    texture2D(DiffuseSampler, vec2(0.8,0.5))+
-    texture2D(DiffuseSampler, vec2(0.8,0.6))+
-    texture2D(DiffuseSampler, vec2(0.8,0.7))+
-    texture2D(DiffuseSampler, vec2(0.8,0.8))+
-    texture2D(DiffuseSampler, vec2(0.8,0.9))+
+    texture2D(MBSampler, vec2(0.8,0.1))+
+    texture2D(MBSampler, vec2(0.8,0.2))+
+    texture2D(MBSampler, vec2(0.8,0.3))+
+    texture2D(MBSampler, vec2(0.8,0.4))+
+    texture2D(MBSampler, vec2(0.8,0.5))+
+    texture2D(MBSampler, vec2(0.8,0.6))+
+    texture2D(MBSampler, vec2(0.8,0.7))+
+    texture2D(MBSampler, vec2(0.8,0.8))+
+    texture2D(MBSampler, vec2(0.8,0.9))+
 
-    texture2D(DiffuseSampler, vec2(0.9,0.1))+
-    texture2D(DiffuseSampler, vec2(0.9,0.2))+
-    texture2D(DiffuseSampler, vec2(0.9,0.3))+
-    texture2D(DiffuseSampler, vec2(0.9,0.4))+
-    texture2D(DiffuseSampler, vec2(0.9,0.5))+
-    texture2D(DiffuseSampler, vec2(0.9,0.6))+
-    texture2D(DiffuseSampler, vec2(0.9,0.7))+
-    texture2D(DiffuseSampler, vec2(0.9,0.8))+
-    texture2D(DiffuseSampler, vec2(0.9,0.9))
+    texture2D(MBSampler, vec2(0.9,0.1))+
+    texture2D(MBSampler, vec2(0.9,0.2))+
+    texture2D(MBSampler, vec2(0.9,0.3))+
+    texture2D(MBSampler, vec2(0.9,0.4))+
+    texture2D(MBSampler, vec2(0.9,0.5))+
+    texture2D(MBSampler, vec2(0.9,0.6))+
+    texture2D(MBSampler, vec2(0.9,0.7))+
+    texture2D(MBSampler, vec2(0.9,0.8))+
+    texture2D(MBSampler, vec2(0.9,0.9))
 )/81.0;
 
 
@@ -181,18 +182,23 @@ void main() {
     vec4 inputColor = texture2D(DiffuseSampler, texCoord);
     vec4 inputHSL = RGBtoHSL(inputColor);
     
+
     //desaturate dark things
-    float brightness = min(0.2,inputHSL.b)*5.0;
+    float brightness = min(0.25,inputHSL.b)*4.0;
     vec4 finalHSL = inputHSL*vec4(1.0,0.5+(brightness*0.5),1.0,1.0);
     vec4 satAjustedColor=HSLtoRGB(finalHSL);
-    
+
+
     //HDR
     float averageBrightness=RGBtoHSL(averageColor).b;
-    //vec4 averagedColor=satAjustedColor*max((1.0-averageBrightness)*1.5,0.8);
-    vec4 averagedColor=satAjustedColor*min(max(0.3/averageBrightness,0.7),4.0);
+    vec4 averagedColor=satAjustedColor*min(max(0.35/averageBrightness,0.833),2.6);
+
 
     //Ajust for stronger or subtler HDR
-    gl_FragColor = (averagedColor*0.4+satAjustedColor*0.6);
+    vec4 outputColor=(averagedColor*0.75+satAjustedColor*0.5);
+    outputColor=min(vec4(1.0),outputColor)*0.8+satAjustedColor*0.2; //add back detail
+    
+    gl_FragColor = outputColor;
 
     
 }

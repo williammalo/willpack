@@ -1,37 +1,23 @@
 #version 120
 
 uniform sampler2D DiffuseSampler;
+uniform sampler2D DarkSampler;
+uniform sampler2D DarkBlurSampler;
+uniform vec2 OutSize;
 varying vec2 texCoord;
-
-
-//width of steps (higher numbers make quality worse)
-const float blurWidth=0.001;
-
-//number of steps (higher numbers cause more lag)
-const float blurSteps=8.0;
-
-//bloom brightness
-const float amount=1.0;
 
 void main() {
     vec4 color=texture2D(DiffuseSampler, texCoord);
-    float brightness=(color.r+color.g+color.b)/3.0;
+    vec4 grayscale=vec4((color.r+color.g+color.b)/3.0);
+    vec4 darkenedColor=texture2D(DarkSampler, texCoord);
+    vec4 darkenedAndBlurred = texture2D(DarkBlurSampler, texCoord);
 
-    vec4 sum = vec4(0);
-    float j;
-    float i;
-    const float foo = 10.0/(   ((blurSteps*2.0)+1.0)*((blurSteps*2.0)+1.0)   );
+    //subtract unblurred darkened image from blurred darkened image to get the bloom overlay
+    vec4 bloom=darkenedAndBlurred-darkenedColor;
 
+    //make sure to remove any negative values
+    bloom=max(bloom,0.0);
 
-    for( i= -blurSteps ;i < blurSteps; i++){
-        for (j = -blurSteps; j < blurSteps; j++){
-            sum += texture2D(DiffuseSampler, texCoord + vec2(j, i)*blurWidth);
-        }
-    }
-
-    sum*=foo;
-    vec4 modifier = sum*sum*(0.015-(brightness*0.01));
-    vec4 outputColor = modifier*amount + color;
-    
-    gl_FragColor = outputColor*0.9;
+    //output bloom added to original image
+    gl_FragColor = color+max(bloom-(grayscale*0.3),0.0)*0.8;
 }

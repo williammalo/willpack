@@ -2,18 +2,100 @@
     "targets": [
         "swap",
         "swap2",
-        "swap3"
+        "swap3",
+        "swap4",
+        "swap5",
+        "pswap",
+        "pprevious",
+        "blurriness"
     ],
     "passes": [
         {
-            "name": "willpackColor",
+            "name": "phosphor",
             "intarget": "minecraft:main",
-            "outtarget": "swap"
+            "outtarget": "pswap",
+            "auxtargets": [
+                {
+                    "name": "PrevSampler",
+                    "id": "pprevious"
+                }
+            ]
         },
         {
-            "name": "willpackBloomX",
+            "name": "blit",
+            "intarget": "pswap",
+            "outtarget": "pprevious"
+        },
+        {
+            "name": "blit",
+            "intarget": "pswap",
+            "outtarget": "blurriness"
+        },
+
+
+
+
+
+        {
+            "name": "willpackColor",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "MBSampler",
+                    "id": "blurriness"
+                }
+            ]
+        },
+        {
+            "name": "willpackDarken",
             "intarget": "swap",
-            "outtarget": "swap2"
+            "outtarget": "swap3"
+        },
+        {
+            "name": "blur",
+            "intarget": "swap3",
+            "outtarget": "swap4",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 1.0, 0.0 ]
+                },
+                {
+                    "name": "Radius",
+                    "values": [ 7.0 ]
+                }
+            ]
+        },
+        {
+            "name": "blur",
+            "intarget": "swap4",
+            "outtarget": "swap5",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 0.0, 1.0 ]
+                },
+                {
+                    "name": "Radius",
+                    "values": [ 7.0 ]
+                }
+            ]
+        },
+        {
+            "name": "willpackBloom",
+            "intarget": "swap",
+            "outtarget": "swap2",
+            "auxtargets": [
+                {
+                    "name": "DarkSampler",
+                    "id": "swap3"
+                },
+                {
+                    "name": "DarkBlurSampler",
+                    "id": "swap5"
+                }
+            ]
         },
         {
             "name": "fxaa",

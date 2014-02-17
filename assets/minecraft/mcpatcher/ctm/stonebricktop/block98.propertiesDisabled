@@ -1,6 +1,0 @@
-tiles=200-203
-method=vertical
-renderPass=3
-faces=east west
-#connect=material
-metadata=0
